@@ -123,9 +123,14 @@ public class SpawnObjects : MonoBehaviour {
         // find Cut
         if (_allTilesObjects[(int)_snakeCoordinats[0].x, (int)_snakeCoordinats[0].y].GetComponent<EnumScript>().ReturnState() == EnumScript.ObjectState.Cut)
         {
-            _snakeList.RemoveAt(_snakeList.Count - 1);
-            _snakeCoordinats.RemoveAt(_snakeList.Count - 1);
-
+            if (_snakeList.Count == 1)
+            {
+                StartNewGame();
+            }else
+            {
+                _snakeList.RemoveAt(_snakeList.Count - 1);
+                _snakeCoordinats.RemoveAt(_snakeList.Count - 1);
+            }                      
         }
 
         // find Body
