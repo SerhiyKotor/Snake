@@ -120,6 +120,14 @@ public class SpawnObjects : MonoBehaviour {
             
         }
 
+        // find Cut
+        if (_allTilesObjects[(int)_snakeCoordinats[0].x, (int)_snakeCoordinats[0].y].GetComponent<EnumScript>().ReturnState() == EnumScript.ObjectState.Cut)
+        {
+            _snakeList.RemoveAt(_snakeList.Count - 1);
+            _snakeCoordinats.RemoveAt(_snakeList.Count - 1);
+
+        }
+
         // find Body
         for (int i = 2; i < _snakeCoordinats.Count - 1; i++)
         {
@@ -281,6 +289,10 @@ public class SpawnObjects : MonoBehaviour {
         if ((_superRandom < 15) && (_superRandom >= 10))
         {
             SpawnObjectState(EnumScript.ObjectState.Swap);
+        }
+        if ((_superRandom < 20) && (_superRandom >= 15))
+        {
+            SpawnObjectState(EnumScript.ObjectState.Cut);
         }
 
         // timer to return in normal speed

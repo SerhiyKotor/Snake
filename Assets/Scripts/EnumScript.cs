@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnumScript : MonoBehaviour
 {
 
-    public enum ObjectState { Empty, Apple, Fast, Slow, Swap, Head, Body, Frame };
+    public enum ObjectState { Empty, Apple, Fast, Slow, Swap, Head, Body, Cut, Frame };
     public GameObject GameObject;
 
     ObjectState _currentState;
@@ -53,8 +53,12 @@ public class EnumScript : MonoBehaviour
                 GameObject.transform.GetChild(6).gameObject.SetActive(true);
                 _currentState = ObjectState.Body;
                 break;
-            case ObjectState.Frame:
+            case ObjectState.Cut:
                 GameObject.transform.GetChild(7).gameObject.SetActive(true);
+                _currentState = ObjectState.Cut;
+                break;
+            case ObjectState.Frame:
+                GameObject.transform.GetChild(8).gameObject.SetActive(true);
                 _currentState = ObjectState.Frame;
                 break;
         }
